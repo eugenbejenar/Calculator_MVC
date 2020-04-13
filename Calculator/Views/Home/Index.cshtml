@@ -1,0 +1,67 @@
+﻿@model Calculator.Models.Operations
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Calculator</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+
+<h3 class="text-center">My Simple Calculator</h3>
+
+@using (@Html.BeginForm("Calculate", "Home", FormMethod.Post))
+{
+    <div class="row-cols-md-6">
+        <div class="container ">
+
+            <div class="">
+                @Html.LabelFor(m => m.firstNum, "Enter first number")
+            </div>
+            <div class="">
+                @Html.TextBoxFor(model => model.firstNum)
+            </div>
+            <div class="mt-2">
+                @Html.LabelFor(model => model.operation, "Select operation:")
+            </div>
+            <div class="">
+                @Html.DropDownListFor(model => model.operation,
+                    new[]
+                    {
+                        new SelectListItem("+", "+"),
+                        new SelectListItem("-", "-"),
+                        new SelectListItem("/", "/"),
+                        new SelectListItem("*", "*"),
+                    })
+            </div>
+
+            <div class="mt-2">
+                @Html.LabelFor(model => model.secondNum, "Enter second number");
+            </div>
+
+            <div class="">
+                @Html.TextBoxFor(model => model.secondNum)
+            </div>
+
+            <div class="mt-2">
+                @Html.LabelFor(model => model.result, "Result:")
+            </div>
+
+            <div class="">
+                @Html.TextBoxFor(model => model.result)
+            </div>
+
+            <div class="mt-2">
+                <button class="btn-primary" type="submit">Calculate</button>
+            </div>
+
+        </div>
+
+    </div>
+}
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
